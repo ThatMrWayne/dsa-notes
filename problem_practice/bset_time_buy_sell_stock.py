@@ -4,7 +4,7 @@ from typing import List
 # TC : O(n)
 # SC : O(n)
 """
-Use bottom-up dynamic programmin
+Use bottom-up dynamic programming
 """
 
 
