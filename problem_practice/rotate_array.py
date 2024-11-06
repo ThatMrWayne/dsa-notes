@@ -15,4 +15,3 @@ def rotate(nums: List[int], k: int) -> None:
     for i in range(length-k):
         nums.append(nums[i])
     del nums[:length-k]
-
