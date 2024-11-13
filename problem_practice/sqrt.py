@@ -1,6 +1,6 @@
 # 69
-# TC :
-# SC :
+# TC : O(logn)
+# SC : O(logn)
 
 
 def mySqrt(x):
