@@ -6,8 +6,7 @@ Can't forget this cuz I solved this in Japan
 """
 
 
-
-def canCompleteCircuit(self, gas, cost) -> int:
+def canCompleteCircuit(gas, cost) -> int:
     if sum(gas) < sum(cost):
         return -1
     total = 0
