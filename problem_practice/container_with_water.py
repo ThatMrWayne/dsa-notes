@@ -3,7 +3,6 @@
 #SC: O(1)
 
 
-
 def maxArea(height) -> int:
     p1, p2 = 0, len(height)-1
     max_area = 0
@@ -16,6 +15,3 @@ def maxArea(height) -> int:
             p2-=1
         else:
             p1+=1
-    print(max_area)
-
-maxArea([1,1])
