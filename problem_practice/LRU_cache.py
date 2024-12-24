@@ -1,3 +1,4 @@
+import unittest
 # 146
 
 
@@ -70,3 +71,42 @@ class LRUCache:
             existed_node.val = value
             if existed_node is not self.tail:
                 self._update_non_tail_node_position(existed_node)
+
+
+class TestLRUCache(unittest.TestCase):
+    def setUp(self):
+        self.cache = LRUCache(capacity=2)
+
+    def test_basic_put_and_get(self):
+        self.cache.put(1,1)
+        self.assertEqual(self.cache.get(1), 1, "should be 1")
+        self.assertEqual(self.cache.get(2), -1, "key 2 is not existed, return -1")
+
+    def test_cache_eviction(self):
+        self.cache.put(1,1)
+        self.cache.put(2,2)
+        self.cache.put(3,3)
+
+        self.assertEqual(self.cache.get(1), -1, "key 1 is evicted.")
+        self.assertEqual(self.cache.get(2), 2, "return 2")
+        self.assertEqual(self.cache.get(3), 3, "return 3")
+
+    def test_update_existed_key(self):
+        self.cache.put(1,1)
+        self.assertEqual(self.cache.get(1), 1, "should be 1")
+
+        self.cache.put(1, 100)
+        self.assertEqual(self.cache.get(1), 100, "should be 100")
+
+    def test_lru_order(self):
+        self.cache.put(1,1)
+        self.cache.put(2,2)
+        self.cache.get(1)
+        self.cache.put(3,3) # 2 is evicted
+
+        self.assertEqual(self.cache.get(1), 1, "return 1")
+        self.assertEqual(self.cache.get(2), -1, "2 s evicted")
+        self.assertEqual(self.cache.get(3), 3, "return 3")
+
+if __name__ == "__main__":
+    unittest.main(verbosity=3)
