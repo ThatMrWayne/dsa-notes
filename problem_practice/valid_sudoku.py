@@ -22,7 +22,7 @@ def isValidSudoku(board) -> bool:
     for row in range(9):
         for col in range(9):
             if row in center_point_idx and col in center_point_idx:
-                if not self.check_center(row, col, board):
+                if not check_center(row, col, board):
                     return False
             if board[row][col] == ".":
                 continue
